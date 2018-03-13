@@ -26,6 +26,9 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        // 绑定路由对象
+        $this->_bootRoutParameterBinders();
     }
 
     /**
@@ -69,5 +72,22 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+
+    /*
+     * 绑定路由参数到对象
+     */
+    private function _bootRoutParameterBinders() {
+        // 自定义解析逻辑
+        // https://laravel-china.org/docs/laravel/5.5/routing#implicit-binding
+        Route::bind('categorySlug', function($value) {
+            return \App\Model\Category::with('articles')->where('slug', '=', $value)->firstOrFail();
+        });
+        Route::bind('articleSlug', function($value) {
+            $a = \App\Model\Article::with('category')->where('slug', '=', $value)->firstOrFail();
+            // var_dump($a);
+            return $a;
+        });
     }
 }

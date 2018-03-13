@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/', ['as' => 'root', 'uses' => 'HomeController@index']);
+Route::get('/category/{categorySlug}', ['as' => 'category', 'uses' => 'CategoryController@index']);
+Route::get('/article/{articleSlug}',   ['as' => 'article',  'uses' => 'ArticleController@index']);

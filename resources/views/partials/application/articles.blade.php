@@ -12,7 +12,7 @@
 				</div>
 			</header>
 			<div class="post-excerpt">
-				{{ getNWords(escapeAndTrim($article->content), 50)  }}
+				{{ getNWords(escapeAndTrim($article->content), 10)  }}
 			</div>
 			<footer class="post-footer">
 				<div class="post-meta-date pull-left">

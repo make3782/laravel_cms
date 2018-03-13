@@ -25,7 +25,9 @@
 		@include('partials.application.top')
 
 		<div class="container">
-			@yield('content')
+			<main class="content">
+				@yield('content')
+			</main>
 		</div>
 
 		@include('partials.application.footer')

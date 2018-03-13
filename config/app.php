@@ -177,6 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * 项目自定义服务
+         */
+        App\Providers\HelperServiceProvider::class,
+
     ],
 
     /*
